@@ -25,16 +25,22 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install dependencies
+        # This tells pnpm where to find your package.json
         run: pnpm install
+        working-directory: artifacts/picnic-clone
 
       - name: Build
-        run: PORT=3000 BASE_PATH=/picnic-clone/ pnpm --filter @workspace/picnic-clone run build
+        # We run the build command from the root but target the specific workspace
+        run: pnpm --filter picnic-clone run build
         env:
           NODE_ENV: production
+          PORT: 3000
+          BASE_PATH: /Siik-Zakin/ 
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          # Double-check this path matches your build output folder
           path: artifacts/picnic-clone/dist/public
 
       - name: Deploy to GitHub Pages
