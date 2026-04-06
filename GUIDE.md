@@ -160,7 +160,7 @@ git init
 git add .
 git commit -m "Initial commit — Picnic clone"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/picnic-clone.git
+git remote add origin https://github.com/Salowe1/Siik-Zakin.git
 git push -u origin main
 ```
 
